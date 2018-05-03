@@ -27,6 +27,16 @@ function ExerciseService(){
             }
         });
     }
+    this.get = function(id){
+        return new Promise(async (resolve, reject)=>{
+            let list = Exercise
+            .find({creator: id})
+            .exec();
+            resolve(list);
+        });
+
+    }
+   
 }
 
 module.exports = new ExerciseService();

@@ -8,7 +8,7 @@ const passport = require('passport');
 const ExerciseService = require('./services/exerciseService');
 // creating routers
 const exerciseRouter = require('./exercise/router');
-
+const weightbmiRouter = require('./weight-bmi/router');
 const {router: usersRouter} = require('./users');
 //const {router: exerciseRouter} = require('./exercise');
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
@@ -31,7 +31,7 @@ const jwtAuth = passport.authenticate('jwt', {session:false});
 // routes
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-
+app.use('/weightandbmi', weightbmiRouter);
 app.use('/exercise', exerciseRouter);
 // protected endpoint
 

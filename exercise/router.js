@@ -10,7 +10,7 @@ const passport = require('passport');
 router.post('/add/exercise', jsonParser, async (req,res)=> {
     try{
       let Exercise = await ExerciseService.create(req.body);
-      res.status(201).json({message: 'Exercise has been created'});
+      res.status(201).json(Exercise);
     } catch (err){
       res.status(500).json({message: 'There was a problem creating the exercise'});
     }
@@ -27,20 +27,40 @@ router.route('/').get(function(req, res){
     });
 });
 
-router.route('/:id').get(function(req,res){
-    var id = req.params.id;
-   Exercise.findById(id, function(err, exercise){
-       res.json(exercise);
-   });
+
+router.get('/singleExercise/:id', function(req,res) {
+    Exercise
+    .find({_id: req.params.id})
+    .exec()
+    .then(data => {
+        res.json(data)
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Something went wrong getting specified id events'});
+    });
+});
+router.get('/:id', function(req,res) {
+    Exercise
+    .find({creator: req.params.id})
+    .exec()
+    .then(data => {
+        res.json(data)
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Something went wrong getting specified id events'});
+    });
 });
 
+/*
 router.route('/edit/:id').get(function(req,res){
     var id = req.params.id;
     Exercise.findById(id, function(err, exercise){
         res.json(exercise);
     });
 });
-router.route('/update/:id').post(function(req, res){
+router.edit('/update/:id').post(function(req, res){
     Exercise.findById(req.params.id, function(err, exercise){
         if(!exercise)
         return next(new Error('Could not load exercise'));
@@ -55,8 +75,8 @@ router.route('/update/:id').post(function(req, res){
         }
     });
 });
-
-router.route('/delete/:id').get(function(req,res){
+*/
+router.delete('/delete/:id').get(function(req,res){
     Exercise.findByIdAndRemove({id: req.params.id},
     function(err, item){
         if(err) res.json(err);
