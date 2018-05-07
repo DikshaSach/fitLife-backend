@@ -21,6 +21,10 @@ const UserSchema = mongoose.Schema({
     firstName:{
         type:String,
         required: true
+    },
+    timezone: {
+        type: String,
+        required: true
     }
 });
 
@@ -29,7 +33,8 @@ UserSchema.methods.serialize = function() {
         username: this.username || '',
         id: this._id || '',
         lastName: this.lastName || '',
-        firstName: this.firstName || ''
+        firstName: this.firstName || '',
+        timezone: this.timezone || ''
     };
 };
 // check if password is correct

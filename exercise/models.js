@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var exerciseSchema = mongoose.Schema({
     title: {type: String, required: true},
-    start:{type: Date, default: Date.now},
-    end:{type:Date, default: Date.now},
+    start:{type: Date},
+    end:{type:Date},
     creator: {type: mongoose.Schema.ObjectId}},
 
     {

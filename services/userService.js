@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 function UserService(){
     this.create = function(userObj){
         return new Promise(async (resolve,reject) => {
-    let {username, password, firstName = '', lastName = ''} = userObj;
+    let {username, password, firstName = '', lastName = '', timezone = ''} = userObj;
    
     // username and password come in pre-trimmed, otherwise an error is thrown
     let hash= await User.hashPassword(password);
@@ -14,7 +14,8 @@ function UserService(){
         username,
         password: hash,
         firstName,
-        lastName
+        lastName,
+        timezone
     });
     resolve(newUser);
         });
