@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 
 var exerciseSchema = mongoose.Schema({
     title: {type: String, required: true},
-    start:{type: Date},
-    end:{type:Date},
+    time: {type: String, required: true},
+    start:{type: Date, required: true},
+    end:{type:Date, required:true},
     creator: {type: mongoose.Schema.ObjectId}},
 
     {
@@ -13,6 +14,7 @@ var exerciseSchema = mongoose.Schema({
 exerciseSchema.methods.serialize = function(){
     return{
         title: this.name,
+        time: this.time,
         creator: this.creator,
         start: this.start,
         end: this.end

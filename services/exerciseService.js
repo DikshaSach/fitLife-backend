@@ -8,6 +8,7 @@ function ExerciseService(){
             try{
                 let{
                     title,
+                    time,
                     creator,
                     start,
                     end
@@ -15,6 +16,7 @@ function ExerciseService(){
                 let newExercise = await Exercise
                 .create({
                     title,
+                    time,
                     creator,
                     start,
                     end
@@ -35,6 +37,31 @@ function ExerciseService(){
             resolve(list);
         });
 
+    },
+    this.update = function(id, exercise){
+        return new Promise(async (resolve, reject)=>{
+            const updated = {};
+            const updateableFields = ['title', 'start', 'time'];
+            updateableFields.forEach(field => {
+                if (field in exercise) {
+                    updated[field] = exercise[field];
+                }
+            });
+            let updatedExercise = Exercise
+            .findByIdAndUpdate(id, {
+                $set: updated},
+                {
+                    new: true
+                });
+                resolve(updatedExercise);
+        });
+    },
+    this.remove = function(id){
+        return new Promise(async(resolve, reject)=> {
+            let deleteExercise = await Exercise
+                .findByIdAndRemove(id);
+                resolve(deleteExercise)
+        });
     }
    
 }

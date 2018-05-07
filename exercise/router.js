@@ -53,35 +53,21 @@ router.get('/:id', function(req,res) {
     });
 });
 
-/*
-router.route('/edit/:id').get(function(req,res){
-    var id = req.params.id;
-    Exercise.findById(id, function(err, exercise){
-        res.json(exercise);
-    });
+router.put('/edit/:id', jsonParser, async (req, res) => {
+    try{
+        let Exercise = await ExerciseService.update(req.params.id, req.body);
+        res.status(204).json(Exercise);
+    } catch (err) {
+        res.status(500).json({message: 'There was a problem updating.'});
+      }
 });
-router.edit('/update/:id').post(function(req, res){
-    Exercise.findById(req.params.id, function(err, exercise){
-        if(!exercise)
-        return next(new Error('Could not load exercise'));
-        else{
-            exercise.exercise = req.body.exercise;
-            exercise.save().then(exercise => {
-                res.json('update complete');
-            })
-            .catch(err =>{
-                res.status(400).send('unable to update');
-            });
-        }
-    });
-});
-*/
-router.delete('/delete/:id').get(function(req,res){
-    Exercise.findByIdAndRemove({id: req.params.id},
-    function(err, item){
-        if(err) res.json(err);
-        else res.json('successfully removed');
-    });
+router.delete('/delete/:id', async (req,res) => {
+   try{
+       let Exercise = await ExerciseService.remove(req.params.id);
+       res.status(204).json(Exercise);
+    }catch(err){
+        res.status(500).json({message: 'Something went wrong in deletion'});
+    }
 });
 
 module.exports = router;

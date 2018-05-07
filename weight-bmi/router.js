@@ -23,6 +23,7 @@ router.post('/add/weightbmi', jsonParser, async (req,res)=> {
     try{
       let WeightBmi = await WeightBmiService.create(req.body);
       res.status(201).json(WeightBmi);
+      res.send('deleted');
     } catch (err){
       res.status(500).json({message: 'There was a problem creating the exercise'});
     }
@@ -31,7 +32,7 @@ router.post('/add/weightbmi', jsonParser, async (req,res)=> {
 router.delete('/delete/:id', async(req,res) => {
     try{
         let WeightBmi = await WeightBmiService.remove(req.params.id);
-        res.status(204).json({message: 'Deleted'});
+        return res.send('deleted!');
     }catch(err){
         res.status(500).json({message: 'Something went wrong in deletion'});
     }
