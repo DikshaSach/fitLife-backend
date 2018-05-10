@@ -64,7 +64,7 @@ router.put('/edit/:id', jsonParser, async (req, res) => {
 router.delete('/delete/:id', async (req,res) => {
    try{
        let Exercise = await ExerciseService.remove(req.params.id);
-       res.status(204).json(Exercise);
+       res.status(204).json(req.params.id);
     }catch(err){
         res.status(500).json({message: 'Something went wrong in deletion'});
     }

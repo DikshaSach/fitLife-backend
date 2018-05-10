@@ -14,8 +14,7 @@ function UserService(){
         username,
         password: hash,
         firstName,
-        lastName,
-        timezone
+        lastName
     });
     resolve(newUser);
         });

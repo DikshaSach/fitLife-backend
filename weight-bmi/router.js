@@ -30,12 +30,13 @@ router.post('/add/weightbmi', jsonParser, async (req,res)=> {
   });
 
 router.delete('/delete/:id', async(req,res) => {
-    try{
+     try{
         let WeightBmi = await WeightBmiService.remove(req.params.id);
         return res.send('deleted!');
     }catch(err){
         res.status(500).json({message: 'Something went wrong in deletion'});
     }
+    
     
 });
 

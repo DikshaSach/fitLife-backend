@@ -11,7 +11,8 @@ function ExerciseService(){
                     time,
                     creator,
                     start,
-                    end
+                    end,
+                    strengthExercise
                 } = exerciseObj;
                 let newExercise = await Exercise
                 .create({
@@ -19,7 +20,8 @@ function ExerciseService(){
                     time,
                     creator,
                     start,
-                    end
+                    end,
+                    strengthExercise
                 });
                 resolve(newExercise);
 
@@ -41,7 +43,7 @@ function ExerciseService(){
     this.update = function(id, exercise){
         return new Promise(async (resolve, reject)=>{
             const updated = {};
-            const updateableFields = ['title', 'start', 'time'];
+            const updateableFields = ['title', 'start', 'time', 'strengthExercise'];
             updateableFields.forEach(field => {
                 if (field in exercise) {
                     updated[field] = exercise[field];
