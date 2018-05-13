@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const ExerciseService = require('./services/exerciseService');
 // creating routers
+const waterRouter = require('./water/router');
 const exerciseRouter = require('./exercise/router');
 const weightbmiRouter = require('./weight-bmi/router');
 const {router: usersRouter} = require('./users');
@@ -33,6 +34,7 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/weightandbmi', weightbmiRouter);
 app.use('/exercise', exerciseRouter);
+app.use('/water', waterRouter);
 // protected endpoint
 
 app.get('/protected', jwtAuth, (req,res) =>{
