@@ -21,6 +21,9 @@ const UserSchema = mongoose.Schema({
     firstName:{
         type:String,
         required: true
+    },
+    height:{
+        type: String
     }
 });
 
@@ -30,6 +33,7 @@ UserSchema.methods.serialize = function() {
         id: this._id || '',
         lastName: this.lastName || '',
         firstName: this.firstName || '',
+        height: this.height || ''
 
     };
 };
