@@ -43,7 +43,7 @@ function ExerciseService(){
     this.update = function(id, exercise){
         return new Promise(async (resolve, reject)=>{
             const updated = {};
-            const updateableFields = ['title', 'start', 'time', 'strengthExercise'];
+            const updateableFields = ['title', 'start', 'time', 'end', 'strengthExercise'];
             updateableFields.forEach(field => {
                 if (field in exercise) {
                     updated[field] = exercise[field];

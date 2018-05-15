@@ -4,7 +4,9 @@ var waterSchema = mongoose.Schema({
     waterIntake:{type:String},
    waterDate: {type:String, required:true},
    id:{type: String},
+   date: {type: String},
     creator: {type: mongoose.Schema.ObjectId}},
+ 
   
   
 
@@ -17,7 +19,8 @@ waterSchema.methods.serialize = function(){
         waterIntake: this.waterIntake,
         creator: this.creater,
         waterDate: this.waterDate,
-        id:this.id
+        id:this.id,
+        date: this.date
         
     }
 }

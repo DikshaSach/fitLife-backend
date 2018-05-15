@@ -9,7 +9,8 @@ function WaterService(){
                     waterIntake,
                     waterDate,
                     creator,
-                    id
+                    id,
+                    date
 
                 } = waterObj;
                 let newWater = await Water
@@ -17,7 +18,8 @@ function WaterService(){
                     waterIntake,
                     waterDate,
                     creator,
-                    id
+                    id,
+                    date
                 });
                 resolve(newWater);
 
