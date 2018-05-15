@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise;
 const morgan = require('morgan');
 const passport = require('passport');
 const ExerciseService = require('./services/exerciseService');
+const path = require('path');
 // creating routers
 const waterRouter = require('./water/router');
 const exerciseRouter = require('./exercise/router');
@@ -25,6 +26,7 @@ app.use(function (req, res, next) {
     }
     next();
 });
+app.use('/', express.static(path.join(__dirname, 'react')));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
