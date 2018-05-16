@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
     }
     next();
 });
-app.use('/', express.static(path.join(__dirname, 'react')));
+
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
@@ -37,7 +37,7 @@ app.use('/auth', authRouter);
 app.use('/weightandbmi', weightbmiRouter);
 app.use('/exercise', exerciseRouter);
 app.use('/water', waterRouter);
-// protected endpoint
+// protected endpoin
 
 app.get('/protected', jwtAuth, (req,res) =>{
     return res.json({
