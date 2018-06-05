@@ -13,7 +13,26 @@ Demo Account Credentials:
 **Username:** testing  
 **Password:** 1234567890     
 Server Github Repo: https://github.com/DikshaSach/fitLife-backend     
-Client Github Repo: https://github.com/DikshaSach/fitLife-clientEnd     
+Client Github Repo: https://github.com/DikshaSach/fitLife-clientEnd 
+## API 
+RESTful API endpoints    
+### GET   
+All Exercies ````...exercise/:id````    
+Single Exercise  ````...exercise/singleExercise/:id````    
+Weight-Bmi ````...weightandbmi/:id````    
+All users water intake ````...water/waterintake/all/:id````    
+Single water intake ````...water/waterintake/:id````    
+### PUT    
+Update water intake ````...water/waterintake/edit/:id````    
+Update exercise event ````...exercise/edit/:id````    
+### DELETE    
+Delete exercise event ````...exercise/delete/:id'````    
+Delete weight and bmi ````...weightandbmi/delete/:id````    
+### POST    
+Add exercise event ````...exercise/add/exercise````    
+Add weight and bmi ````...weightandbmi/add/weightbmi````    
+Add water intake ````...water/add````    
+ 
 ## Technology Stack
 ### Server Side
 * Node
